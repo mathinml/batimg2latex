@@ -69,6 +69,7 @@ def mathpix_dir(pngs):
     sfile = open(filename,'w') 
     
     sfile.write('%%'+t+'\n\n')
+    timeout = 2
     for i,pic in enumerate(pngs):
         r = latex({
             'src': image_uri(pic),
@@ -80,6 +81,7 @@ def mathpix_dir(pngs):
         latexscript = '%%{}\n$$\n{}\n$$\n\n\n'.format(pic,raw(equ))
         print(latexscript)
         sfile.write(latexscript)
+        time.sleep(timeout)
         
     sfile.close()    
 
